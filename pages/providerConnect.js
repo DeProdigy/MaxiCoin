@@ -180,9 +180,9 @@ export default function ProviderConnect({setConnection}) {
         </HStack>
         <HStack>
           {!account ? (
-            <Button onClick={connectWallet}>Connect Wallet</Button>
+            <Button onClick={connectWallet} colorScheme='blue' >Connect Wallet</Button>
           ) : (
-            <Button onClick={disconnect}>Disconnect</Button>
+            <Button onClick={disconnect} colorScheme='red'>Disconnect</Button>
           )}
         </HStack>
         <VStack justifyContent="center" alignItems="center" padding="10px 0">
