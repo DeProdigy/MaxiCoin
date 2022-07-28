@@ -12,7 +12,7 @@ const config = {
     rinkeby: {
       url: process.env.INFURA_RPC_URL,
       accounts: [process.env.METAMASK_PRIVATE_KEY],
-      // saveDeployments: true,
+      saveDeployments: true,
     },
 //  unused configuration commented out for now
 //  mumbai: {

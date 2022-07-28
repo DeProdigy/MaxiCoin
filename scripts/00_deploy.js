@@ -12,7 +12,7 @@ async function main() {
   await nft.deployed();
   console.log("nft deployed to:", nft.address);
 
-  fs.writeFileSync('./config.js', `export const maxiCoinAddress = "${maxiCoin.address}" \nexport const nftAddress = "${nft.address}"`)
+  fs.writeFileSync('./config.js', `export const maxiCoinAddress = "${maxiCoin.address}" \nexport const nftAddress = "${nft.address}" \nexport const maxAddress="0xd472e7FE0CEBb1F4085071dF239e51129CF4A39c"`)
 }
 
 main()

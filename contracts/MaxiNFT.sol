@@ -55,7 +55,7 @@ contract MaxiNFT is ERC721URIStorage, ReentrancyGuard {
                 '{',
                     '"description": "MaxiCoin NFTs",',
                     '"image": "Max Elbert",',
-                    '"image": "', imageURLs[itemId], '",'
+                    '"image": "', imageURLs[itemId], '"'
                 '}'
             )
         );

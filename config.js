@@ -1,2 +1,2 @@
-export const maxiCoinAddress = "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9" 
-export const nftAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+export const maxiCoinAddress = "0x2bc23651613b2737ad9F7d7C125750177eA21DCA" 
+export const nftAddress = "0x2639A57D434483665Ceb55B4A146800a0da1ce54"
