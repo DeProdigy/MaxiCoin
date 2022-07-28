@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 
 import ProviderConnect from './providerConnect.js'
@@ -19,32 +19,42 @@ import MaxiNFT from '../artifacts/contracts/MaxiNFT.sol/MaxiNFT.json'
 export default function Home() {
   const [connection, setConnection] = useState();
   const [formInput, updateFormInput] = useState({ ethAddress: '', maxiCoinAmount: ''})
+  const [hasCoins, setHasCoins] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
 
-  async function hasCoins() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+  async function checkCoins() {
+    if(connection === undefined) return;
+
+    const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
+
+    console.log('singer address: ', await signer.getAddress())
 
     let contract = new ethers.Contract(maxiCoinAddress, MaxiCoin.abi, signer)
     let balance = await contract.balanceOf(await signer.getAddress());
 
-    return ethers.utils.formatEther(balance) >= 0;
+    setHasCoins(ethers.utils.formatEther(balance) > 0);
   }
 
-  async function isOwner() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+  async function checkOwner() {
+    if(connection === undefined) return;
+
+    const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
+
+    console.log('singer address: ', await signer.getAddress())
 
     let contract = new ethers.Contract(maxiCoinAddress, MaxiCoin.abi, signer)
     let owner = await contract.owner()
 
-    return owner === await signer.getAddress();
+    setIsOwner(owner === await signer.getAddress());
   }
 
   async function sendMaxiCoin() {
     if (formInput.maxiCoinAmount === '') return;
     if (formInput.ethAddress === '') return;
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
 
     const amount = ethers.utils.parseUnits(formInput.maxiCoinAmount, 'ether')
@@ -55,13 +65,18 @@ export default function Home() {
   }
 
   async function mintNFT() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
 
     let contract = new ethers.Contract(nftAddress, MaxiNFT.abi, signer)
     let transaction = await contract.mintItem()
     await transaction.wait()
   }
+
+  useEffect(() => {
+    checkCoins();
+    checkOwner();
+  }, [connection]);
 
   return (
     <div className={styles.container}>
@@ -83,7 +98,7 @@ export default function Home() {
         <ProviderConnect setConnection={setConnection} />
 
         <div className={styles.grid}>
-          { isOwner() && (
+          { isOwner && (
             <div className={styles.inputCard}>
               <h2 className={styles.description}>Hello Max!</h2>
               <p>Please enter the ETH address and the amount of MaxiCoin you would like to send to your friend</p>
@@ -101,7 +116,7 @@ export default function Home() {
             </div>
           )}
 
-          { hasCoins() && (
+          { hasCoins && (
             <div className={styles.inputCard}>
               <h2 className={styles.description}>Mint Max NFT!</h2>
               <p>You have permission to mint an exclusive NFT because Max has sent you Maxicoins</p>
@@ -112,10 +127,16 @@ export default function Home() {
             </div>
           )}
 
-          { !hasCoins() && (
+          { !hasCoins && connection && (
             <div className={styles.card}>
               <h2 className={styles.description}>Unfortunately you do not have Maxicoins</h2>
-              <p>Ask mask to send you some!</p>
+              <p>Ask Max to send you some!</p>
+            </div>
+          )}
+
+          { !connection && (
+            <div className={styles.card}>
+              <h2 className={styles.description}>Please connect your wallet above ^</h2>
             </div>
           )}
         </div>

@@ -32,11 +32,10 @@ export default function ProviderConnect({setConnection}) {
 
   useEffect(() => {
     web3Modal = new Web3Modal({
-      cacheProvider: true, // optional
+      cacheProvider: false, // optional
       providerOptions // required
     });
   });
-
 
   const connectWallet = async () => {
     try {
@@ -45,7 +44,7 @@ export default function ProviderConnect({setConnection}) {
       const accounts = await library.listAccounts();
       const network = await library.getNetwork();
       setProvider(provider);
-      setConnection(library);
+      setConnection(provider);
       setLibrary(library);
       if (accounts) setAccount(accounts[0]);
       setChainId(network.chainId);
