@@ -100,7 +100,7 @@ export default function Home() {
         <div className={styles.grid}>
           { isOwner && (
             <div className={styles.inputCard}>
-              <h2 className={styles.description}>Hello Max!</h2>
+              <h2 className={styles.description}>Hello Max! 🤘</h2>
               <p>Please enter the ETH address and the amount of MaxiCoin you would like to send to your friend</p>
               <form>
                 <div>
@@ -119,7 +119,7 @@ export default function Home() {
           { hasCoins && (
             <div className={styles.inputCard}>
               <h2 className={styles.description}>Mint Max NFT!</h2>
-              <p>You have permission to mint an exclusive NFT because Max has sent you Maxicoins</p>
+              <p>You have permission to mint an exclusive NFT because Max has sent you Maxicoins 🙌</p>
               <form>
 
                 <button type="button" className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={mintNFT}>Mint!</button>
@@ -129,14 +129,14 @@ export default function Home() {
 
           { !hasCoins && connection && (
             <div className={styles.card}>
-              <h2 className={styles.description}>Unfortunately you do not have Maxicoins</h2>
+              <h2 className={styles.description}>Unfortunately you do not have Maxicoins 😢</h2>
               <p>Ask Max to send you some!</p>
             </div>
           )}
 
           { !connection && (
             <div className={styles.card}>
-              <h2 className={styles.description}>Please connect your wallet above ^</h2>
+              <h2 className={styles.description}>Please connect your wallet above ☝️</h2>
             </div>
           )}
         </div>

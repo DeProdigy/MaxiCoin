@@ -163,14 +163,14 @@ export default function ProviderConnect({setConnection}) {
   return (
     <>
       <VStack justifyContent="center" alignItems="center">
-        <HStack marginBottom="10px">
+        <HStack marginBottom="10px" backgroundColor={"#fff"}>
           <Text
             margin="0"
             lineHeight="1.15"
             fontSize={["1em", "2em", "3em", "4em"]}
             fontWeight="600"
             sx={{
-              background: "linear-gradient(90deg, #1652f0 0%, #b9cbfb 70.35%)",
+              background: "linear-gradient(90deg, #9acd32 30%, #0070f3 100.35%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent"
             }}
@@ -180,22 +180,22 @@ export default function ProviderConnect({setConnection}) {
         </HStack>
         <HStack>
           {!account ? (
-            <Button onClick={connectWallet} colorScheme='blue' >Connect Wallet</Button>
+            <button type='button' onClick={connectWallet} className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Connect Wallet</button >
           ) : (
-            <Button onClick={disconnect} colorScheme='red'>Disconnect</Button>
+            <button type='button' onClick={disconnect} className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Disconnect</button >
           )}
         </HStack>
         <VStack justifyContent="center" alignItems="center" padding="10px 0">
-          <HStack>
+          {/* <HStack>
             <Text>{`Connection Status: `}</Text>
             {account ? (
-              <CheckCircleIcon color="green" />
+              <CheckCircleIcon color="#fff" />
             ) : (
-              <WarningIcon color="#cd5700" />
+              <WarningIcon color="#fff" />
             )}
-          </HStack>
+          </HStack> */}
 
-          <Tooltip label={account} placement="right">
+          <Tooltip label={account} placement="right" color={"#000"} backgroundColor={"#fff"}>
             <Text>{`Account: ${truncateAddress(account)}`}</Text>
           </Tooltip>
           {/* <Text>{`Network ID: ${chainId ? chainId : "No Network"}`}</Text> */}
@@ -274,7 +274,7 @@ export default function ProviderConnect({setConnection}) {
             </Box>
           </HStack>
         )} */}
-        <Text>{error ? error.message : null}</Text>
+        {/* <Text>{error ? error.message : null}</Text> */}
       </VStack>
     </>
   );

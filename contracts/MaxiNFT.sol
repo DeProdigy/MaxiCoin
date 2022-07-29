@@ -12,6 +12,7 @@ contract MaxiNFT is ERC721URIStorage, ReentrancyGuard {
     Counters.Counter private _tokenIds;
 
     string[] public imageURLs = [
+        "https://ipfs.io/ipfs/QmZqgqtsHDLTwzemYNsiNpemZbL6jE8GgycjZbXSgnACQt",
         "https://ipfs.io/ipfs/QmXy7DYR8qEJSbYnk2xkwwPeZvmGULMsXpikxqNMKLSKPm",
         "https://ipfs.io/ipfs/Qmd2MXY5XCAvctxW7AgjuJQmBGYk1BfmVLVaQtpYvz7nmP",
         "https://ipfs.io/ipfs/QmSWYGYA5zBK1ug76bCDvKBqLPcatpsUzao85moRryCmaH",
@@ -19,7 +20,11 @@ contract MaxiNFT is ERC721URIStorage, ReentrancyGuard {
         "https://ipfs.io/ipfs/QmQWeESLnY3qsuyRikzYxkNBv2RcyP3T43KDpV7zqqyruL",
         "https://ipfs.io/ipfs/QmPTs51y14podxdsehrMzmyQvfWpGTTumQAZqoF7gzvtaN",
         "https://ipfs.io/ipfs/Qme3ithLJFSdRWuFASbG6Y88xz1aLt7gBjPRtiWMHMNn1V",
-        "https://ipfs.io/ipfs/QmUGvpsdWMDKyw936EC3UrPyuKjcNxAotgrkKVHzfjCE3c"
+        "https://ipfs.io/ipfs/QmUGvpsdWMDKyw936EC3UrPyuKjcNxAotgrkKVHzfjCE3c",
+        "https://ipfs.io/ipfs/QmQ28bSbX2RgPUvB5ndkPjCgR9ASYSvyA4NRcVa14oQwvh",
+        "https://ipfs.io/ipfs/QmdyktjwXRTCnQHL92ybMS2YVGbMcehjn75DpEhbFfhydn",
+        "https://ipfs.io/ipfs/QmVyfrmfAfvV2BZmySJtVHmuqai4Y5rhua5XxgzyRNCZoX",
+        "https://ipfs.io/ipfs/QmNjTK9QWrBKvv6D2DJjson96sy47zbgqPo15BcA1FhfZ8"
     ];
 
     address public coinAddress;
