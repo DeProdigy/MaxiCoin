@@ -127,7 +127,7 @@ export default function Home() {
             </div>
           )}
 
-          { !hasCoins && connection && (
+          { !hasCoins && connection && !isOwner && (
             <div className={styles.card}>
               <h2 className={styles.description}>Unfortunately you do not have Maxicoins 😢</h2>
               <p>Ask Max to send you some!</p>
