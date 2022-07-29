@@ -148,7 +148,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Created by{' '}
+          <p>Created by{' '}</p>
           <span className={styles.card}>
             <Image src="/pfp.png" alt="Alex PFP" width={50} height={50} />
           </span>

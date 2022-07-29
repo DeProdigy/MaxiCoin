@@ -195,7 +195,7 @@ export default function ProviderConnect({setConnection}) {
             )}
           </HStack> */}
 
-          <Tooltip label={account} placement="right" color={"#000"} backgroundColor={"#fff"}>
+          <Tooltip label={account} placement="right" color={"#000"} backgroundColor={"#fff"} padding={"10px"}>
             <Text>{`Account: ${truncateAddress(account)}`}</Text>
           </Tooltip>
           {/* <Text>{`Network ID: ${chainId ? chainId : "No Network"}`}</Text> */}
