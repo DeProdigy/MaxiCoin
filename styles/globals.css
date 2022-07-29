@@ -6,3 +6,7 @@ h1, h2, p {
   background-color: #9acd32;
   padding: 10px;
 }
+
+input {
+  color: #9acd32;
+}
